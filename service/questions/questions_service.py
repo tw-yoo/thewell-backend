@@ -76,7 +76,6 @@ async def answer_question(
         if return_value.startswith("1"):
             return_value = return_value[3:]
 
-            
             await crud.create(
                 Question(
                     id=f"{user_id}_{str(uuid.uuid4())}",
