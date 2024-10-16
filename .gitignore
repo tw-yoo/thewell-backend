@@ -11,3 +11,5 @@ secret/__pycache__/
 .env
 
 alembic/
+
+venv/
