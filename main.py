@@ -47,3 +47,8 @@ async def dynamic_cors_middleware(request, call_next):
 app.include_router(question)
 app.include_router(auth)
 app.include_router(test)
+
+
+@app.get("/ping")
+async def ping():
+    return "pong"
