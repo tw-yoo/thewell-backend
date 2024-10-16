@@ -1,4 +1,4 @@
-def init_system_config() -> dict:
+def init_system_config(subject) -> dict:
     return {
         "role": "system",
         "content": f"""

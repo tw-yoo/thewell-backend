@@ -13,7 +13,7 @@ question = APIRouter(
 )
 
 
-@question.post("/ask/{subject}/{user_id}")
+@question.post("/{subject}/{user_id}")
 async def create_upload_file(
         req: Request,
         file: UploadFile = File(...),

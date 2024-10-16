@@ -9,3 +9,5 @@ __pycache__/
 secret/__pycache__/
 
 .env
+
+alembic/

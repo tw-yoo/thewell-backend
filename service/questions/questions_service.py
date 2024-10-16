@@ -63,17 +63,10 @@ async def answer_question(
 
         client = OpenAI(api_key=api_key)
 
-        question_prompt = get_question_with_image(base64_image)
-
-        if user_id not in user_threads:
-            # Start with the system message to define the assistant's behavior
-            user_threads[user_id] = [init_system_config()]
-
-            # Append the new question to the conversation history
-        user_threads[user_id].append(question_prompt)
+        question_prompt = get_question_with_image(base64_image, subject)
 
         response = json.loads(client.chat.completions.create(
-            messages=[init_system_config(), question_prompt],
+            messages=[init_system_config(subject), question_prompt],
             model="gpt-4o",
             max_tokens=3000
         ).model_dump_json())
@@ -83,17 +76,16 @@ async def answer_question(
         if return_value.startswith("1"):
             return_value = return_value[3:]
 
-            asyncio.run(
-                crud.create(
-                    Question(
-                        id=f"{user_id}_{str(uuid.uuid4())}",
-                        user_id=user_id,
-                        subject=subject,
-                        answer=return_value,
-                        image=encoded_image,
-                        image_small=encoded_image_downsized,
-                        created_at=create_at
-                    )
+            
+            await crud.create(
+                Question(
+                    id=f"{user_id}_{str(uuid.uuid4())}",
+                    user_id=user_id,
+                    subject=subject,
+                    answer=return_value,
+                    image=encoded_image,
+                    image_small=encoded_image_downsized,
+                    created_at=create_at
                 )
             )
 

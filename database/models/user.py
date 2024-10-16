@@ -17,4 +17,5 @@ class User(Base):
     device_id: str = Column(String, nullable=True)
     password: str = Column(String, default="1234", nullable=True)
     logged_in: bool = Column(Boolean, default=False)
-    last_login: datetime = Column(DateTime, default=datetime.utcnow, nullable=False)
+    is_admin: bool = Column(Boolean, default=False, nullable=False)
+    is_active: bool = Column(Boolean, default=True, nullable=False)

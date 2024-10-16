@@ -1,5 +1,9 @@
 # 필요한 라이브러리 import하기
 import subprocess
+import os
+from dotenv import load_dotenv
+load_dotenv()  # Load environment variables from .env file
+SQLALCHEMY_DATABASE_URL = os.getenv("DATABASE_URL")
 
 from sqlalchemy import create_engine, text, inspect, MetaData
 from sqlalchemy.ext.declarative import declarative_base
@@ -8,7 +12,7 @@ from sqlmodel import SQLModel
 
 # SQLAlchemy 사용할 DB URL 생성하기
 # SQLALCHEMY_DATABASE_URL = "postgresql://localhost:5432/postgres"
-SQLALCHEMY_DATABASE_URL = "postgresql+psycopg2://postgres@localhost:5432/postgres"
+# SQLALCHEMY_DATABASE_URL = "postgresql+psycopg2://postgres:han15680!@3.35.231.111:5432/postgres"
 # SQLALCHEMY_DATABASE_URL = "postgresql://user:password@postgresserver/db"
 
 # SQLAlchemy engine 생성하기
