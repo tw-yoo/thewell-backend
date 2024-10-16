@@ -19,3 +19,4 @@ class User(Base):
     logged_in: bool = Column(Boolean, default=False, nullable=False)
     is_admin: bool = Column(Boolean, default=False, nullable=False)
     is_active: bool = Column(Boolean, default=True, nullable=False)
+    created_at: datetime = Column(DateTime, default=datetime.utcnow, nullable=False)

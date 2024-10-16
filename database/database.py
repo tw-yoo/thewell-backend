@@ -19,7 +19,7 @@ branch = subprocess.check_output(["git", "rev-parse", "--abbrev-ref", "HEAD"]).s
 if branch == "main":
     SQLALCHEMY_DATABASE_URL = "postgresql+psycopg2://postgres:han15680!@3.35.231.111:5432/postgres"
 else:
-    SQLALCHEMY_DATABASE_URL = "postgresql://localhost:5432/postgres"
+    SQLALCHEMY_DATABASE_URL = "postgresql+psycopg2://postgres@localhost:5432/postgres"
 
 # SQLAlchemy engine 생성하기
 engine = create_engine(

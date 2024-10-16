@@ -10,6 +10,6 @@ secret/__pycache__/
 
 .env
 
-alembic/
+alembic/versions/
 
 venv/
