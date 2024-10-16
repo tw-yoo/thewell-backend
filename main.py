@@ -3,6 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 import re
 
 from controller.auth.auth_controller import auth
+from controller.admin.admin_controller import admin
 from controller.questions.questions_controller import question
 from controller.test.test_controller import test
 from database.database import create_db_and_tables, is_latest_migration_applied, \
@@ -51,6 +52,7 @@ async def ping():
 app.include_router(question)
 app.include_router(auth)
 app.include_router(test)
+app.include_router(admin)
 
 
 @app.get("/ping")

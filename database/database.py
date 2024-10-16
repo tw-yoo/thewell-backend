@@ -10,10 +10,16 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 from sqlmodel import SQLModel
 
-# SQLAlchemy 사용할 DB URL 생성하기
-# SQLALCHEMY_DATABASE_URL = "postgresql://localhost:5432/postgres"
-# SQLALCHEMY_DATABASE_URL = "postgresql+psycopg2://postgres:han15680!@3.35.231.111:5432/postgres"
-# SQLALCHEMY_DATABASE_URL = "postgresql://user:password@postgresserver/db"
+import subprocess
+
+# Determine the branch name
+branch = subprocess.check_output(["git", "rev-parse", "--abbrev-ref", "HEAD"]).strip().decode()
+
+# Import the correct config file
+if branch == "main":
+    SQLALCHEMY_DATABASE_URL = "postgresql+psycopg2://postgres:han15680!@3.35.231.111:5432/postgres"
+else:
+    SQLALCHEMY_DATABASE_URL = "postgresql://localhost:5432/postgres"
 
 # SQLAlchemy engine 생성하기
 engine = create_engine(
