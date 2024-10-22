@@ -46,18 +46,6 @@ def generate_revision():
         raise e
 
 
-def run_migrations():
-    try:
-        print("Running Alembic migrations...")
-        subprocess.run(["alembic", "upgrade", "head"], check=True)
-        print("Alembic migrations applied successfully.")
-    except subprocess.CalledProcessError as e:
-        print(f"Error running migrations: {e}")
-        raise e
-
-
-
-
 def is_latest_migration_applied():
     try:
         with engine.connect() as connection:

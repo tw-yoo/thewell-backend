@@ -11,14 +11,6 @@ from sqlalchemy.orm import sessionmaker
 from sqlmodel import SQLModel, Session
 from sqlalchemy import text
 
-
-# SQLAlchemy 사용할 DB URL 생성하기
-# SQLALCHEMY_DATABASE_URL = "postgresql://localhost:5432/postgres"
-# SQLALCHEMY_DATABASE_URL = "postgresql+psycopg2://postgres:han15680!@{}:5432/postgres
-# :5432/postgres"
-# SQLALCHEMY_DATABASE_URL = "postgresql://user:password@postgresserver/db"
-
-# SQLAlchemy engine 생성하기
 engine = create_engine(
     SQLALCHEMY_DATABASE_URL
 )
